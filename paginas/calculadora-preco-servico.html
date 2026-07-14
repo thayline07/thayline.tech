@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quanto cobrar pelo seu serviço? — Calculadora grátis | thayline.tech</title>
+<meta name="description" content="Descubra o preço mínimo do seu serviço em 1 minuto: custos, horas e margem. Ferramenta gratuita da thayline.tech.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--petroleo:#123F3A;--petroleo-esc:#0B2B27;--menta:#2FBF8F;--menta-txt:#177A57;
+  --dourado:#E8B25A;--coral:#E2654F;--areia:#FAF7F2;--grafite:#1C2321;--cinza:#6B7472;--linha:#E5DFD5}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--petroleo);color:var(--grafite);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:520px;margin:0 auto;padding:0 18px}
+  header{color:#fff;padding:40px 0 26px;text-align:center}
+  .logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px}
+  .logo .dot{color:var(--dourado)} .logo .tech{color:var(--menta);font-weight:600}
+  header h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,7vw,34px);letter-spacing:-.02em;margin:14px 0 8px}
+  header p{color:#CFE0DB;font-size:14px;max-width:400px;margin:0 auto}
+  .card{background:var(--areia);border-radius:20px 20px 0 0;padding:26px 20px 60px;margin-top:26px}
+  .campo{margin-bottom:18px}
+  label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+  label small{display:block;font-weight:400;color:var(--cinza);font-size:12px}
+  input{width:100%;padding:14px;border:1.5px solid var(--linha);border-radius:12px;font:600 16px 'Inter',sans-serif;background:#fff;color:var(--grafite)}
+  input:focus{outline:2px solid var(--menta);border-color:var(--menta)}
+  .linha2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .botao{width:100%;background:var(--petroleo);color:#fff;border:none;border-radius:12px;padding:16px;font:700 16px 'Inter',sans-serif;cursor:pointer;margin-top:6px}
+  .botao:active{transform:scale(.98)}
+  .resultado{display:none;margin-top:22px;background:var(--petroleo);border-radius:16px;padding:22px;color:#fff;text-align:center}
+  .resultado.on{display:block;animation:sobe .4s ease}
+  @keyframes sobe{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .resultado .lbl{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--menta);text-transform:uppercase}
+  .resultado .valor{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:44px;color:var(--dourado);margin:6px 0 2px}
+  .resultado .sub{font-size:12px;color:#CFE0DB;margin-bottom:14px}
+  .quebra{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center}
+  .quebra div{background:rgba(255,255,255,.08);border-radius:10px;padding:10px 6px}
+  .quebra .q1{font-size:10px;color:#9DC3BB;text-transform:uppercase;letter-spacing:.06em}
+  .quebra .q2{font-weight:700;font-size:14px;margin-top:2px}
+  .alerta{display:none;font-size:13px;background:#FBE9E5;color:#B23F2C;border-radius:10px;padding:10px 14px;margin-top:12px}
+  .cta{margin-top:20px;background:#fff;border:1px solid var(--linha);border-radius:16px;padding:20px;text-align:center}
+  .cta p{font-size:14px;margin-bottom:12px}
+  .cta a{display:inline-block;background:var(--menta);color:var(--petroleo-esc);font-weight:700;font-size:14px;text-decoration:none;padding:13px 24px;border-radius:99px}
+  .rodape{font-size:11px;color:var(--cinza);text-align:center;margin-top:22px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">thayline<span class="dot">.</span><span class="tech">tech</span></div>
+  <h1>Quanto cobrar pelo seu serviço?</h1>
+  <p>Preencha 5 campos e descubra o preço mínimo para não trabalhar no prejuízo. Grátis, direto no navegador.</p>
+</header>
+
+<div class="card">
+  <div class="wrap" style="padding:0">
+    <div class="campo">
+      <label>Custos fixos do mês (R$)<small>Aluguel, luz, internet, apps... tudo que você paga mesmo sem atender.</small></label>
+      <input type="number" id="fixos" inputmode="decimal" placeholder="Ex: 1500">
+    </div>
+    <div class="campo">
+      <label>Horas que você atende por mês<small>Só as horas produtivas. Ex: 6h/dia × 22 dias = 132.</small></label>
+      <input type="number" id="horas" inputmode="decimal" placeholder="Ex: 130">
+    </div>
+    <div class="linha2">
+      <div class="campo">
+        <label>Duração do serviço<small>Em minutos</small></label>
+        <input type="number" id="minutos" inputmode="decimal" placeholder="Ex: 60">
+      </div>
+      <div class="campo">
+        <label>Material gasto (R$)<small>Produtos usados nesse serviço</small></label>
+        <input type="number" id="material" inputmode="decimal" placeholder="Ex: 15">
+      </div>
+    </div>
+    <div class="campo">
+      <label>Quanto você quer de lucro? (%)<small>Sugestão: entre 30% e 50%.</small></label>
+      <input type="number" id="margem" inputmode="decimal" placeholder="Ex: 40" value="40">
+    </div>
+    <button class="botao" onclick="calcular()">Calcular meu preço mínimo</button>
+    <div class="alerta" id="alerta"></div>
+
+    <div class="resultado" id="res">
+      <div class="lbl">Cobre no mínimo</div>
+      <div class="valor" id="preco">R$ 0</div>
+      <div class="sub">por esse serviço, para cobrir custos e ter o lucro que você definiu</div>
+      <div class="quebra">
+        <div><div class="q1">Sua hora custa</div><div class="q2" id="hora">—</div></div>
+        <div><div class="q1">Custo do serviço</div><div class="q2" id="custo">—</div></div>
+        <div><div class="q1">Seu lucro</div><div class="q2" id="lucro">—</div></div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <p><strong>Sabia o resultado de cabeça?</strong> Pois é — a maioria não sabe. E controlar isso todo mês, sozinha, é ainda mais difícil. Foi para isso que eu criei a <strong>Planilha Financeira PRO</strong>.</p>
+      <a href="https://planilhafinanceirapro.tiiny.site/" target="_blank" rel="noopener">Conhecer a planilha →</a>
+    </div>
+    <p class="rodape">Feita com código e carinho por Thayline Simioni · @thayline.tech</p>
+  </div>
+</div>
+
+<script>
+function n(id){const v=parseFloat(document.getElementById(id).value);return isNaN(v)?0:v}
+function br(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function calcular(){
+  const fixos=n('fixos'),horas=n('horas'),min=n('minutos'),mat=n('material'),mg=n('margem');
+  const al=document.getElementById('alerta'),res=document.getElementById('res');
+  al.style.display='none';res.classList.remove('on');
+  if(horas<=0||min<=0){al.textContent='Preencha as horas do mês e a duração do serviço 🙂';al.style.display='block';return}
+  if(mg>=100){al.textContent='A margem precisa ser menor que 100%.';al.style.display='block';return}
+  const custoHora=fixos/horas;
+  const custoServico=custoHora*(min/60)+mat;
+  const preco=custoServico/(1-mg/100);
+  document.getElementById('preco').textContent=br(preco);
+  document.getElementById('hora').textContent=br(custoHora);
+  document.getElementById('custo').textContent=br(custoServico);
+  document.getElementById('lucro').textContent=br(preco-custoServico);
+  res.classList.add('on');
+  res.scrollIntoView({behavior:'smooth',block:'center'});
+}
+</script>
+</body>
+</html>
