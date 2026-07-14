@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flor de Açúcar — Cardápio digital · Site demonstrativo</title>
+<meta name="description" content="Cardápio digital demonstrativo de confeitaria criado por thayline.tech.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--cacau:#3E2723;--cacau-esc:#2A1A17;--rosa:#E58FA4;--rosa-claro:#FBE8ED;
+  --baunilha:#FFF9F2;--caramelo:#C98A3D;--cinza:#8A7A74;--linha:#EFE2D8}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Nunito',sans-serif;background:var(--baunilha);color:var(--cacau);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:560px;margin:0 auto;padding:0 18px}
+  h1,h2,.serif{font-family:'DM Serif Display',serif;font-weight:400}
+
+  header{background:var(--cacau);color:var(--baunilha);text-align:center;padding:44px 18px 38px;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;top:-40px;left:-40px;width:150px;height:150px;border-radius:50%;background:var(--rosa);opacity:.28}
+  header::after{content:"";position:absolute;bottom:-50px;right:-30px;width:170px;height:170px;border-radius:50%;background:var(--caramelo);opacity:.22}
+  .marca{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--rosa)}
+  header h1{font-size:clamp(36px,9vw,48px);margin:10px 0 6px;position:relative;z-index:1}
+  header h1 i{color:var(--rosa)}
+  header p{font-size:14px;color:#E9D9CE;position:relative;z-index:1}
+  .selos{display:flex;gap:8px;justify-content:center;margin-top:16px;position:relative;z-index:1;flex-wrap:wrap}
+  .selos span{font-size:11px;font-weight:700;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:5px 12px}
+
+  .nav-cat{position:sticky;top:0;z-index:20;background:var(--baunilha);border-bottom:1px solid var(--linha);display:flex;gap:8px;overflow-x:auto;padding:12px 18px;scrollbar-width:none}
+  .nav-cat::-webkit-scrollbar{display:none}
+  .nav-cat a{white-space:nowrap;font-size:13px;font-weight:800;color:var(--cacau);text-decoration:none;background:#fff;border:1px solid var(--linha);border-radius:99px;padding:8px 16px}
+  .nav-cat a:active{background:var(--rosa-claro)}
+
+  section{padding:30px 0 6px}
+  h2{font-size:26px;margin-bottom:4px}
+  .sub{font-size:13px;color:var(--cinza);margin-bottom:16px}
+  .item{background:#fff;border:1px solid var(--linha);border-radius:16px;padding:16px;display:flex;gap:14px;align-items:center;margin-bottom:12px}
+  .foto{min-width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;background:var(--rosa-claro)}
+  .item h3{font-size:16px;font-weight:800}
+  .item p{font-size:12.5px;color:var(--cinza)}
+  .dir{margin-left:auto;text-align:right;min-width:86px}
+  .preco{font-family:'DM Serif Display',serif;font-size:18px;color:var(--caramelo)}
+  .pedir{display:inline-block;margin-top:6px;font-size:11px;font-weight:800;color:#fff;background:var(--cacau);border-radius:99px;padding:6px 12px;text-decoration:none}
+  .tag{display:inline-block;font-size:10px;font-weight:800;color:#fff;background:var(--rosa);border-radius:99px;padding:2px 9px;margin-left:6px;vertical-align:middle}
+
+  .encomenda{background:var(--cacau);color:var(--baunilha);border-radius:20px;padding:26px 20px;text-align:center;margin:26px 0}
+  .encomenda h2{color:var(--baunilha)}
+  .encomenda p{font-size:13px;color:#E9D9CE;margin:6px 0 16px}
+  .btn-zap{display:inline-block;background:var(--rosa);color:var(--cacau-esc);font-weight:800;font-size:15px;text-decoration:none;padding:14px 28px;border-radius:99px}
+
+  footer{padding:22px 0 34px;font-size:12px;color:var(--cinza);text-align:center}
+  footer a{color:var(--rosa);font-weight:800;text-decoration:none}
+  .selo-demo{position:fixed;bottom:14px;right:14px;z-index:50;background:var(--cacau);color:var(--baunilha);font-size:11px;font-weight:800;padding:9px 14px;border-radius:99px;box-shadow:0 8px 22px rgba(42,26,23,.35);text-decoration:none}
+  .selo-demo b{color:var(--caramelo)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="marca">Confeitaria artesanal</div>
+  <h1>Flor de Açúcar<i>.</i></h1>
+  <p>Doces feitos no dia, do nosso forno para a sua mesa.</p>
+  <div class="selos"><span>⏰ Encomendas até 18h</span><span>🛵 Entregamos na região</span><span>💳 Pix e cartão</span></div>
+</header>
+
+<nav class="nav-cat">
+  <a href="#bolos">🍰 Bolos</a>
+  <a href="#doces">🍬 Docinhos</a>
+  <a href="#tortas">🥧 Tortas</a>
+  <a href="#presentes">🎁 Para presentear</a>
+</nav>
+
+<div class="wrap">
+
+<section id="bolos">
+  <h2>Bolos</h2>
+  <p class="sub">Fatia generosa ou o bolo inteiro para a sua festa.</p>
+  <div class="item"><div class="foto">🍫</div><div><h3>Bolo de chocolate belga<span class="tag">mais pedido</span></h3><p>Massa fofinha, recheio de brigadeiro cremoso</p></div><div class="dir"><div class="preco">R$ 12 <small>/fatia</small></div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20pedir%20o%20bolo%20de%20chocolate%20belga%20🍫" target="_blank" rel="noopener">Pedir</a></div></div>
+  <div class="item"><div class="foto">🥕</div><div><h3>Bolo de cenoura</h3><p>Com casquinha crocante de chocolate</p></div><div class="dir"><div class="preco">R$ 10 <small>/fatia</small></div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20pedir%20o%20bolo%20de%20cenoura%20🥕" target="_blank" rel="noopener">Pedir</a></div></div>
+  <div class="item"><div class="foto">🎂</div><div><h3>Bolo de festa personalizado</h3><p>Sob encomenda · a partir de 15 fatias</p></div><div class="dir"><div class="preco">R$ 120+</div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20encomendar%20um%20bolo%20de%20festa%20🎂" target="_blank" rel="noopener">Pedir</a></div></div>
+</section>
+
+<section id="doces">
+  <h2>Docinhos</h2>
+  <p class="sub">O cento clássico das festas — ou a caixinha para hoje.</p>
+  <div class="item"><div class="foto">🍬</div><div><h3>Brigadeiro gourmet</h3><p>Chocolate 50% cacau, granulado belga</p></div><div class="dir"><div class="preco">R$ 3,50 <small>/un</small></div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20pedir%20brigadeiros%20gourmet%20🍬" target="_blank" rel="noopener">Pedir</a></div></div>
+  <div class="item"><div class="foto">🥥</div><div><h3>Beijinho de coco</h3><p>Coco fresco ralado na hora</p></div><div class="dir"><div class="preco">R$ 3,00 <small>/un</small></div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20pedir%20beijinhos%20🥥" target="_blank" rel="noopener">Pedir</a></div></div>
+  <div class="item"><div class="foto">📦</div><div><h3>Cento da festa<span class="tag">promoção</span></h3><p>100 docinhos sortidos à sua escolha</p></div><div class="dir"><div class="preco">R$ 280</div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20encomendar%20o%20cento%20da%20festa%20📦" target="_blank" rel="noopener">Pedir</a></div></div>
+</section>
+
+<section id="tortas">
+  <h2>Tortas</h2>
+  <p class="sub">Geladas, cremosas e perigosamente boas.</p>
+  <div class="item"><div class="foto">🍋</div><div><h3>Torta de limão</h3><p>Base crocante, merengue maçaricado</p></div><div class="dir"><div class="preco">R$ 65</div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20pedir%20a%20torta%20de%20lim%C3%A3o%20🍋" target="_blank" rel="noopener">Pedir</a></div></div>
+  <div class="item"><div class="foto">🍓</div><div><h3>Torta de morango</h3><p>Creme de baunilha e morangos frescos</p></div><div class="dir"><div class="preco">R$ 75</div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20pedir%20a%20torta%20de%20morango%20🍓" target="_blank" rel="noopener">Pedir</a></div></div>
+</section>
+
+<section id="presentes">
+  <h2>Para presentear</h2>
+  <p class="sub">Caixas prontas para surpreender alguém.</p>
+  <div class="item"><div class="foto">🎁</div><div><h3>Caixa afeto</h3><p>6 docinhos + mini bolo + cartãozinho escrito à mão</p></div><div class="dir"><div class="preco">R$ 48</div><a class="pedir" href="https://wa.me/5551999999999?text=Oi!%20Quero%20a%20caixa%20afeto%20🎁" target="_blank" rel="noopener">Pedir</a></div></div>
+</section>
+
+<div class="encomenda">
+  <h2>Encomendas para festas</h2>
+  <p>Casamento, aniversário, batizado — monte seu pedido com a gente e receba no dia, fresquinho.</p>
+  <a class="btn-zap" href="https://wa.me/5551999999999?text=Oi!%20Quero%20fazer%20uma%20encomenda%20para%20festa%20🧁" target="_blank" rel="noopener">Fazer encomenda no WhatsApp</a>
+</div>
+
+<footer>
+  Flor de Açúcar · confeitaria fictícia para demonstração<br>
+  Cardápio digital criado por <a href="https://wa.me/5554999616192?text=Oi!%20Vi%20o%20card%C3%A1pio%20demo%20e%20quero%20um%20para%20o%20meu%20neg%C3%B3cio" target="_blank" rel="noopener">thayline.tech</a> — peça o seu
+</footer>
+
+</div>
+<a class="selo-demo" href="https://wa.me/5554999616192?text=Oi!%20Vi%20o%20card%C3%A1pio%20demo%20e%20quero%20um%20para%20o%20meu%20neg%C3%B3cio" target="_blank" rel="noopener">✦ Demo por <b>thayline.tech</b></a>
+</body>
+</html>
