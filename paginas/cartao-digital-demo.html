@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camila Duarte · Lash Designer — Cartão digital · Demonstração</title>
+<meta name="description" content="Cartão de visita digital demonstrativo criado por thayline.tech.">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--noite:#1D1A26;--noite2:#262231;--lilas:#B9A7E6;--lilas-vivo:#9D82E0;
+  --gelo:#F4F2FA;--cinza:#9A94AB;--dourado:#D9B878}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Sora',sans-serif;background:linear-gradient(170deg,var(--noite) 0%,#141119 100%);color:var(--gelo);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:26px 16px;-webkit-font-smoothing:antialiased}
+  .cartao{width:100%;max-width:400px;text-align:center}
+  .halo{width:112px;height:112px;margin:0 auto 14px;border-radius:50%;padding:4px;background:conic-gradient(var(--lilas-vivo),var(--dourado),var(--lilas-vivo));animation:gira 8s linear infinite}
+  @keyframes gira{to{transform:rotate(360deg)}}
+  .halo .foto{width:100%;height:100%;border-radius:50%;background:var(--noite2);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:var(--lilas);animation:gira 8s linear infinite reverse}
+  h1{font-size:24px;font-weight:800;letter-spacing:-.01em}
+  .papel{font-size:13px;color:var(--lilas);font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:4px 0 8px}
+  .bio{font-size:13.5px;color:var(--cinza);max-width:300px;margin:0 auto 22px}
+  .botoes{display:grid;gap:10px;margin-bottom:22px}
+  .b{display:flex;align-items:center;gap:12px;background:var(--noite2);border:1px solid #363044;border-radius:14px;padding:15px 18px;color:var(--gelo);text-decoration:none;font-weight:600;font-size:14px;transition:transform .15s ease,border-color .15s ease}
+  .b:hover{transform:translateY(-2px);border-color:var(--lilas)}
+  .b .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;background:#332C45}
+  .b.destaque{background:var(--lilas-vivo);border-color:var(--lilas-vivo);color:#171321}
+  .b.destaque .ic{background:rgba(0,0,0,.15)}
+  .b small{margin-left:auto;font-size:11px;color:inherit;opacity:.65}
+  .servicos{background:var(--noite2);border:1px solid #363044;border-radius:16px;padding:18px;margin-bottom:22px;text-align:left}
+  .servicos h2{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lilas);margin-bottom:10px;text-align:center}
+  .servicos li{list-style:none;display:flex;justify-content:space-between;font-size:13.5px;padding:8px 0;border-bottom:1px dashed #363044}
+  .servicos li:last-child{border-bottom:none}
+  .servicos li span:last-child{color:var(--dourado);font-weight:700}
+  .rodape{font-size:11px;color:var(--cinza)}
+  .rodape a{color:var(--lilas);font-weight:700;text-decoration:none}
+  @media (prefers-reduced-motion: reduce){.halo,.halo .foto{animation:none}.b{transition:none}}
+</style>
+</head>
+<body>
+<div class="cartao">
+  <div class="halo"><div class="foto">CD</div></div>
+  <h1>Camila Duarte</h1>
+  <div class="papel">Lash Designer</div>
+  <p class="bio">Extensão de cílios com naturalidade e técnica. Atendimento com hora marcada no coração do bairro Menino Deus.</p>
+
+  <div class="botoes">
+    <a class="b destaque" href="https://wa.me/5551999999999?text=Oi%20Camila!%20Quero%20agendar%20um%20hor%C3%A1rio%20✨" target="_blank" rel="noopener"><span class="ic">💬</span> Agendar pelo WhatsApp <small>resposta rápida</small></a>
+    <a class="b" href="#" rel="noopener"><span class="ic">📸</span> Ver trabalhos no Instagram <small>@camilalash</small></a>
+    <a class="b" href="#" rel="noopener"><span class="ic">📍</span> Como chegar <small>Menino Deus</small></a>
+    <a class="b" href="#" rel="noopener"><span class="ic">⭐</span> Avaliações das clientes <small>4,9</small></a>
+  </div>
+
+  <div class="servicos">
+    <h2>Serviços e valores</h2>
+    <ul>
+      <li><span>Volume brasileiro</span><span>R$ 160</span></li>
+      <li><span>Efeito fox</span><span>R$ 180</span></li>
+      <li><span>Manutenção (até 21 dias)</span><span>R$ 90</span></li>
+      <li><span>Remoção</span><span>R$ 40</span></li>
+    </ul>
+  </div>
+
+  <p class="rodape">Perfil fictício para demonstração · Cartão digital por <a href="https://wa.me/5554999616192?text=Oi!%20Vi%20o%20cart%C3%A3o%20digital%20demo%20e%20quero%20o%20meu" target="_blank" rel="noopener">thayline.tech</a> — peça o seu ✦</p>
+</div>
+</body>
+</html>
