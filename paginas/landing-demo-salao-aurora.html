@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salão Aurora — Beleza com hora marcada</title>
+<meta name="description" content="Site demonstrativo de salão de beleza criado por thayline.tech — landing pages para pequenos negócios.">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ameixa:#33222B; --ameixa-esc:#241820; --rose:#B4526E; --rose-vivo:#C96684;
+    --rose-claro:#F4E3E8; --creme:#FBF6F1; --papel:#FFFDFB;
+    --dourado:#C9A05C; --verde:#7B8B6F; --cinza:#7A6E73; --linha:#EADFD9;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Karla',sans-serif;background:var(--creme);color:var(--ameixa);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.serif{font-family:'Prata',serif;font-weight:400;line-height:1.15;letter-spacing:.01em}
+  .manu{font-family:'Caveat',cursive;font-weight:600;color:var(--rose);font-size:1.5em;letter-spacing:.01em}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+  section{padding:72px 0;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--rose)}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--rose)}
+
+  /* grão de papel sobre tudo */
+  .grao{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.5;mix-blend-mode:multiply}
+
+  .btn{display:inline-block;background:var(--ameixa);color:var(--creme);text-decoration:none;font-weight:700;font-size:15px;padding:16px 32px;border-radius:99px;transition:transform .18s ease,background .18s ease;box-shadow:0 10px 24px rgba(51,34,43,.22)}
+  .btn:hover{transform:translateY(-2px) rotate(-.5deg);background:var(--rose)}
+  .btn:focus-visible{outline:3px solid var(--dourado);outline-offset:3px}
+
+  /* fita superior */
+  .fita{background:var(--ameixa);color:var(--creme);overflow:hidden;padding:9px 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  .fita-trilho{display:flex;gap:0;width:max-content;animation:rola 26s linear infinite}
+  .fita span{padding:0 18px;white-space:nowrap}
+  .fita i{font-style:normal;color:var(--dourado)}
+  @keyframes rola{to{transform:translateX(-50%)}}
+
+  /* topo */
+  .topo{position:sticky;top:0;z-index:80;background:rgba(251,246,241,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha);padding:14px 0}
+  .topo .wrap{display:flex;justify-content:space-between;align-items:center}
+  .marca{font-family:'Prata',serif;font-size:22px;text-decoration:none;color:var(--ameixa)}
+  .marca i{font-style:normal;color:var(--rose)}
+  .topo nav{display:flex;gap:22px;align-items:center}
+  .topo nav a{font-size:13px;font-weight:700;color:var(--ameixa);text-decoration:none}
+  .topo nav a:hover{color:var(--rose)}
+  .topo nav .btn{padding:10px 20px;font-size:13px;box-shadow:none}
+  @media(max-width:640px){.topo nav a:not(.btn){display:none}}
+
+  /* hero */
+  .hero{padding:70px 0 84px}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+  @media(max-width:760px){.hero .wrap{grid-template-columns:1fr}}
+  .hero h1{font-size:clamp(40px,6.4vw,64px);margin:16px 0 18px}
+  .hero h1 em{font-style:italic;color:var(--rose);position:relative;white-space:nowrap}
+  .hero h1 em svg{position:absolute;left:0;bottom:-10px;width:100%;height:14px}
+  .hero p{font-size:17px;color:var(--cinza);max-width:440px;margin-bottom:28px}
+  .hero .acoes{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .hero .nota{font-size:13px;color:var(--cinza)}
+  .hero .nota b{color:var(--verde)}
+
+  /* cartão-arco do hero */
+  .arco{position:relative;justify-self:center}
+  .arco-moldura{width:min(320px,80vw);aspect-ratio:3/4;border-radius:170px 170px 22px 22px;background:
+      radial-gradient(120% 90% at 20% 10%, #E9C4CF 0%, transparent 55%),
+      radial-gradient(110% 100% at 85% 90%, #D9A05F33 0%, transparent 50%),
+      linear-gradient(160deg,#C96684 0%, #8E3D57 60%, #5C2B3D 100%);
+    border:1px solid #ffffff88;box-shadow:0 30px 60px rgba(51,34,43,.28), inset 0 0 0 10px #FBF6F1, inset 0 0 0 11px #E3CDD4;
+    display:flex;align-items:center;justify-content:center;transform:rotate(1.5deg)}
+  .arco-moldura .serif{font-size:110px;color:#FBF6F1;text-shadow:0 4px 18px rgba(36,24,32,.35)}
+  .selo-giro{position:absolute;top:-26px;right:-20px;width:104px;height:104px;animation:gira 14s linear infinite}
+  @keyframes gira{to{transform:rotate(360deg)}}
+  .etiqueta{position:absolute;left:-18px;bottom:34px;background:var(--papel);border:1px solid var(--linha);border-radius:12px;padding:10px 16px;font-size:13px;box-shadow:0 12px 26px rgba(51,34,43,.14);transform:rotate(-3deg)}
+  .etiqueta b{display:block;color:var(--dourado);font-size:15px}
+  @media (prefers-reduced-motion: reduce){.fita-trilho,.selo-giro{animation:none}.btn{transition:none}}
+
+  /* serviços */
+  .serv{background:var(--papel);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+  .serv-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+  .serv h2{font-size:clamp(30px,5vw,44px);margin-top:10px}
+  .serv-head .manu{transform:rotate(-2deg);display:inline-block}
+  .menu{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+  @media(max-width:760px){.menu{grid-template-columns:1fr}}
+  .item{display:flex;align-items:baseline;gap:10px;padding:17px 0;border-bottom:1px solid var(--linha);position:relative}
+  .item .nome{font-weight:700;font-size:16px}
+  .item .desc{font-size:13px;color:var(--cinza)}
+  .item .pontos{flex:1;border-bottom:2px dotted #D8C7CE;transform:translateY(-4px)}
+  .item .preco{font-family:'Prata',serif;font-size:18px;color:var(--rose);white-space:nowrap}
+  .tag-pop{position:absolute;top:8px;left:0;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--dourado);color:#fff;border-radius:99px;padding:2px 10px;transform:rotate(-2deg)}
+  .item.pop{padding-top:30px}
+  .serv .obs{font-size:14px;color:var(--cinza);margin-top:22px}
+  .serv .obs .manu{font-size:1.35em}
+
+  /* diferenciais */
+  .difs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  @media(max-width:760px){.difs{grid-template-columns:1fr}}
+  .dif{background:var(--papel);border:1px solid var(--linha);border-radius:130px 130px 18px 18px;padding:40px 24px 26px;text-align:center;position:relative}
+  .dif:nth-child(2){transform:rotate(.6deg)}
+  .dif:nth-child(3){transform:rotate(-.6deg)}
+  .dif .num{font-family:'Prata',serif;color:var(--dourado);font-size:14px;letter-spacing:.3em}
+  .dif .ic{font-size:30px;margin:10px 0 8px}
+  .dif h3{font-size:19px;margin-bottom:8px}
+  .dif p{font-size:14px;color:var(--cinza)}
+
+  /* depoimentos */
+  .depo{background:var(--ameixa-esc);color:var(--creme)}
+  .depo::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 80% 0%, #B4526E22, transparent)}
+  .depo .wrap{position:relative}
+  .depo .eyebrow{color:var(--dourado)}
+  .depo .eyebrow::before{background:var(--dourado)}
+  .depo h2{font-size:clamp(30px,5vw,44px);margin:10px 0 38px}
+  .depo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+  @media(max-width:760px){.depo-grid{grid-template-columns:1fr}}
+  .depo-card{background:#FBF6F108;border:1px solid #FBF6F122;border-radius:18px;padding:26px;position:relative}
+  .depo-card:nth-child(1){transform:rotate(-1deg)}
+  .depo-card:nth-child(3){transform:rotate(1deg);}
+  .depo-card::before{content:"“";font-family:'Prata',serif;font-size:64px;color:var(--dourado);position:absolute;top:-6px;left:16px;opacity:.9}
+  .depo-card p{font-size:15px;font-style:italic;margin:26px 0 14px;color:#F2E8EC}
+  .depo-card b{font-size:12px;color:var(--dourado);font-style:normal;letter-spacing:.14em}
+  .estrelas{color:var(--dourado);letter-spacing:3px;font-size:13px}
+
+  /* horários e local */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+  @media(max-width:760px){.info-grid{grid-template-columns:1fr}}
+  .info{background:var(--papel);border:1px dashed #D8C7CE;border-radius:18px;padding:28px;position:relative}
+  .info h3{font-size:20px;margin-bottom:16px}
+  .info li{list-style:none;display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px dashed var(--linha)}
+  .info li:last-child{border-bottom:none}
+  .info li span:last-child{font-weight:700}
+  .info p{font-size:14px;color:var(--cinza)}
+  .info .manu{position:absolute;right:22px;top:-16px;transform:rotate(2deg);background:var(--creme);padding:0 10px}
+
+  /* cta final */
+  .final{text-align:center;padding:88px 0}
+  .final h2{font-size:clamp(32px,5.6vw,48px);max-width:560px;margin:14px auto 10px}
+  .final .manu{display:block;margin-bottom:26px}
+
+  footer{background:var(--papel);border-top:1px solid var(--linha);padding:30px 0;font-size:13px;color:var(--cinza)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+  footer a{color:var(--rose);font-weight:700;text-decoration:none}
+
+  .selo-demo{position:fixed;bottom:16px;right:16px;z-index:95;background:var(--ameixa);color:var(--creme);font-size:12px;font-weight:700;padding:10px 16px;border-radius:99px;box-shadow:0 8px 24px rgba(36,24,32,.35);text-decoration:none}
+  .selo-demo b{color:var(--dourado)}
+
+  /* revelação ao rolar */
+  .rev{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .rev.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.rev{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<svg class="grao" aria-hidden="true"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2"/><feColorMatrix values="0 0 0 0 0.2 0 0 0 0 0.13 0 0 0 0 0.17 0 0 0 0.05 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<div class="fita" aria-hidden="true">
+  <div class="fita-trilho">
+    <span>Agenda aberta <i>✿</i> Corte <i>✿</i> Cor <i>✿</i> Unhas <i>✿</i> Sobrancelhas <i>✿</i> Pacotes mensais <i>✿</i></span>
+    <span>Agenda aberta <i>✿</i> Corte <i>✿</i> Cor <i>✿</i> Unhas <i>✿</i> Sobrancelhas <i>✿</i> Pacotes mensais <i>✿</i></span>
+  </div>
+</div>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#">Salão Aurora<i>.</i></a>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#depoimentos">Clientes</a>
+      <a href="#visite">Onde estamos</a>
+      <a class="btn" href="#agendar">Agendar</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Cabelo · Unhas · Estética</span>
+      <h1>Seu momento de cuidado, com <em>hora marcada<svg viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 10 Q 50 2 100 8 T 197 6" fill="none" stroke="#C9A05C" stroke-width="3" stroke-linecap="round"/></svg></em>.</h1>
+      <p>No Aurora você agenda pelo WhatsApp em segundos, chega na hora combinada e sai se sentindo incrível — sem espera, sem correria.</p>
+      <div class="acoes">
+        <a class="btn" href="#agendar">Agendar pelo WhatsApp</a>
+        <span class="nota"><b>●</b> Respondemos em poucos minutos</span>
+      </div>
+    </div>
+    <div class="arco">
+      <div class="arco-moldura"><span class="serif">A.</span></div>
+      <svg class="selo-giro" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+        <circle cx="50" cy="50" r="49" fill="#C9A05C"/>
+        <circle cx="50" cy="50" r="30" fill="none" stroke="#FBF6F1" stroke-width="1"/>
+        <text font-size="10.5" letter-spacing="2.5" fill="#FBF6F1" font-family="Karla,sans-serif" font-weight="700">
+          <textPath href="#circ">BELEZA COM CARINHO · DESDE 2019 ·</textPath>
+        </text>
+      </svg>
+      <div class="etiqueta"><b>★ 4,9</b> avaliação das clientes</div>
+    </div>
+  </div>
+</div>
+
+<section class="serv" id="servicos">
+  <div class="wrap">
+    <div class="serv-head rev">
+      <div>
+        <span class="eyebrow">Nossos serviços</span>
+        <h2>Menu de beleza</h2>
+      </div>
+      <span class="manu">preços de amiga ✿</span>
+    </div>
+    <div class="menu rev">
+      <div>
+        <div class="item pop"><span class="tag-pop">mais pedido</span><div><div class="nome">Corte feminino</div><div class="desc">Inclui lavagem e finalização</div></div><div class="pontos"></div><div class="preco">R$ 75</div></div>
+        <div class="item"><div><div class="nome">Escova</div><div class="desc">Modelada ou lisa</div></div><div class="pontos"></div><div class="preco">R$ 50</div></div>
+        <div class="item"><div><div class="nome">Coloração</div><div class="desc">Consulta de tom incluída</div></div><div class="pontos"></div><div class="preco">R$ 180+</div></div>
+      </div>
+      <div>
+        <div class="item"><div><div class="nome">Progressiva</div><div class="desc">Produtos sem formol</div></div><div class="pontos"></div><div class="preco">R$ 250+</div></div>
+        <div class="item"><div><div class="nome">Manicure + pedicure</div><div class="desc">Combo da semana</div></div><div class="pontos"></div><div class="preco">R$ 65</div></div>
+        <div class="item"><div><div class="nome">Design de sobrancelhas</div><div class="desc">Com henna opcional</div></div><div class="pontos"></div><div class="preco">R$ 45</div></div>
+      </div>
+    </div>
+    <p class="obs rev">Pacotes mensais com condições especiais — <span class="manu">pergunta no WhatsApp!</span></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow rev">Por que a Aurora</span>
+    <h2 class="rev" style="font-size:clamp(30px,5vw,44px);margin-top:10px">Pensado para a sua rotina.</h2>
+    <div class="difs">
+      <div class="dif rev"><div class="num">— 01 —</div><div class="ic">🗓</div><h3>Agenda sem espera</h3><p>Horário marcado é horário cumprido. Seu tempo vale ouro.</p></div>
+      <div class="dif rev"><div class="num">— 02 —</div><div class="ic">✨</div><h3>Produtos premium</h3><p>As mesmas linhas profissionais que a gente usaria em casa.</p></div>
+      <div class="dif rev"><div class="num">— 03 —</div><div class="ic">💳</div><h3>Pagamento fácil</h3><p>Pix, cartão em até 3x e pacotes para quem é de casa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="depo" id="depoimentos">
+  <div class="wrap">
+    <span class="eyebrow rev">Quem vem, volta</span>
+    <h2 class="rev">O que as clientes dizem</h2>
+    <div class="depo-grid">
+      <div class="depo-card rev"><div class="estrelas">★★★★★</div><p>Marquei pelo WhatsApp no intervalo do trabalho e fui atendida na hora exata. Virei cliente fixa.</p><b>MARIANA S.</b></div>
+      <div class="depo-card rev"><div class="estrelas">★★★★★</div><p>A coloração ficou idêntica à referência que levei. E o cuidado com a saúde do cabelo é visível em cada detalhe.</p><b>PAULA R.</b></div>
+      <div class="depo-card rev"><div class="estrelas">★★★★★</div><p>O combo de unhas da semana é o meu momento de paz. Preço justo e capricho sempre.</p><b>DÉBORA L.</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="visite">
+  <div class="wrap">
+    <span class="eyebrow rev">Visite a gente</span>
+    <h2 class="rev" style="font-size:clamp(30px,5vw,44px);margin-top:10px">Horários e localização</h2>
+    <div class="info-grid">
+      <div class="info rev">
+        <span class="manu">chega 10 min antes p/ um café ☕</span>
+        <h3>Horário de atendimento</h3>
+        <ul>
+          <li><span>Terça a sexta</span><span>9h – 19h</span></li>
+          <li><span>Sábado</span><span>8h – 17h</span></li>
+          <li><span>Domingo e segunda</span><span>Fechado</span></li>
+        </ul>
+      </div>
+      <div class="info rev">
+        <h3>Onde estamos</h3>
+        <p>Rua das Flores, 123 — Centro<br>Porto Alegre · RS</p>
+        <p style="margin-top:12px">Estacionamento conveniado ao lado e parada de ônibus na esquina.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="agendar">
+  <div class="wrap">
+    <span class="eyebrow rev" style="justify-content:center">Agenda aberta</span>
+    <h2 class="rev">Garanta seu horário desta semana.</h2>
+    <span class="manu rev">a agenda de sábado voa! ✿</span>
+    <a class="btn rev" href="https://wa.me/5551999999999?text=Oi!%20Quero%20agendar%20um%20hor%C3%A1rio%20no%20Sal%C3%A3o%20Aurora%20%F0%9F%92%95" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Salão Aurora · negócio fictício para demonstração</span>
+    <span>Site criado por <a href="https://wa.me/5554999616192" target="_blank" rel="noopener">thayline.tech</a> — quero um site assim para o meu negócio</span>
+  </div>
+</footer>
+
+<a class="selo-demo" href="https://wa.me/5554999616192?text=Oi!%20Vi%20o%20site%20demonstrativo%20e%20quero%20um%20para%20o%20meu%20neg%C3%B3cio" target="_blank" rel="noopener">✦ Site demo por <b>thayline.tech</b></a>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+  }), {threshold:.15});
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
