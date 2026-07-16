@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>thayline.tech · páginas demo</title>
+<meta name="description" content="Hub com todas as páginas independentes da thayline.tech prontas para deploy na Vercel.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0e1722;--bg2:#111d2b;--card:#172435;--card2:#1d2d42;--txt:#f4f7fb;--muted:#a8b6c7;--line:#24384f;--accent:#7ce0b3;--accent2:#f0b36f;--shadow:0 24px 60px rgba(0,0,0,.28)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:radial-gradient(circle at top left,#18314a 0%,transparent 36%),linear-gradient(160deg,var(--bg) 0%,var(--bg2) 100%);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:40px 20px 64px}
+  header{display:grid;gap:14px;align-items:end;grid-template-columns:1.3fr .7fr;margin-bottom:28px}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  h1{font-family:'Manrope',sans-serif;font-size:clamp(34px,6vw,60px);line-height:1.02;letter-spacing:-.04em;max-width:720px}
+  .lead{font-size:17px;line-height:1.7;color:var(--muted);max-width:720px;margin-top:12px}
+  .panel{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:18px 20px;box-shadow:var(--shadow)}
+  .panel strong{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);margin-bottom:6px}
+  .panel p{font-size:14px;color:var(--muted);line-height:1.6}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:28px}
+  @media (max-width:860px){header,.grid{grid-template-columns:1fr}.wrap{padding-top:24px}}
+  @media (max-width:620px){.grid{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;min-height:220px}
+  .card h2{font-family:'Manrope',sans-serif;font-size:24px;line-height:1.1;letter-spacing:-.03em}
+  .card p{color:var(--muted);line-height:1.6;font-size:14px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:rgba(124,224,179,.1);color:var(--accent);border:1px solid rgba(124,224,179,.2);border-radius:99px;padding:7px 10px}
+  .chip.alt{background:rgba(240,179,111,.1);color:var(--accent2);border-color:rgba(240,179,111,.2)}
+  .actions{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
+  a.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:800;border-radius:12px;padding:13px 16px;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+  a.btn:hover{transform:translateY(-1px)}
+  .primary{background:var(--accent);color:#082015}
+  .ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  footer{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+  code{font-family:inherit;color:#d9e6f7}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <div class="badge">thayline.tech · deploy pronto</div>
+        <h1>Todas as páginas estão separadas e prontas para publicar na Vercel.</h1>
+        <p class="lead">Cada HTML continua independente e agora o projeto tem uma página inicial organizada para navegar entre elas. As rotas amigáveis também ficam ativadas no deploy.</p>
+      </div>
+      <aside class="panel">
+        <strong>Como usar</strong>
+        <p>Abra a raiz do deploy e escolha uma página. Se preferir, use diretamente a rota limpa de cada demo. Exemplo: <code>/cardapio-demo-confeitaria</code>.</p>
+      </aside>
+    </header>
+
+    <section class="grid" aria-label="Páginas disponíveis">
+      <article class="card">
+        <div class="meta"><span class="chip">calculadora</span><span class="chip alt">serviços</span></div>
+        <div>
+          <h2>Calculadora de preço de serviço</h2>
+          <p>Ferramenta para estimar preço mínimo com base em custos, horas e margem de lucro.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="/calculadora-preco-servico">Abrir página</a>
+          <a class="btn ghost" href="/paginas/calculadora-preco-servico.html">Ver HTML</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="chip">cardápio</span><span class="chip alt">confeitaria</span></div>
+        <div>
+          <h2>Cardápio digital de confeitaria</h2>
+          <p>Menu visual com seções de bolos, docinhos, tortas e presenteáveis.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="/cardapio-demo-confeitaria">Abrir página</a>
+          <a class="btn ghost" href="/paginas/cardapio-demo-confeitaria.html">Ver HTML</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="chip">cartão digital</span><span class="chip alt">beauty</span></div>
+        <div>
+          <h2>Cartão digital demo</h2>
+          <p>Apresentação compacta com botões de contato e lista de serviços.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="/cartao-digital-demo">Abrir página</a>
+          <a class="btn ghost" href="/paginas/cartao-digital-demo.html">Ver HTML</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="chip">landing page</span><span class="chip alt">salão</span></div>
+        <div>
+          <h2>Landing demo do Salão Aurora</h2>
+          <p>Landing mais completa, com seções de serviços, depoimentos e CTA.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="/landing-demo-salao-aurora">Abrir página</a>
+          <a class="btn ghost" href="/paginas/landing-demo-salao-aurora.html">Ver HTML</a>
+        </div>
+      </article>
+
+      <article class="card" style="grid-column:1/-1">
+        <div class="meta"><span class="chip">produto</span><span class="chip alt">venda</span></div>
+        <div>
+          <h2>Página de venda da planilha financeira</h2>
+          <p>Landing de conversão com apresentação do produto, benefícios e blocos de prova social.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="/pagina-venda-planilha">Abrir página</a>
+          <a class="btn ghost" href="/paginas/pagina-venda-planilha.html">Ver HTML</a>
+        </div>
+      </article>
+    </section>
+
+    <footer>Estrutura pronta para deploy estático na Vercel. Raiz: <code>/</code> · páginas independentes em <code>/paginas</code>.</footer>
+  </main>
+</body>
+</html>

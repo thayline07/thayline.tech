@@ -1,0 +1,24 @@
+{
+  "routes": [
+    {
+      "src": "/calculadora-preco-servico",
+      "dest": "/paginas/calculadora-preco-servico.html"
+    },
+    {
+      "src": "/cardapio-demo-confeitaria",
+      "dest": "/paginas/cardapio-demo-confeitaria.html"
+    },
+    {
+      "src": "/cartao-digital-demo",
+      "dest": "/paginas/cartao-digital-demo.html"
+    },
+    {
+      "src": "/landing-demo-salao-aurora",
+      "dest": "/paginas/landing-demo-salao-aurora.html"
+    },
+    {
+      "src": "/pagina-venda-planilha",
+      "dest": "/paginas/pagina-venda-planilha.html"
+    }
+  ]
+}
