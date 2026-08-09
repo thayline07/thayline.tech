@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espaço Serena — Agende seu horário · Demonstração</title>
+<meta name="description" content="Agenda online demonstrativa criada por thayline.tech — a cliente escolhe o serviço e o horário, e a reserva cai no seu WhatsApp.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--salvia:#8A9B84;--salvia-esc:#5C6E57;--carvao:#2C3129;--creme:#F7F5EF;
+  --papel:#FFFFFF;--argila:#C4795A;--cinza:#8B8B83;--linha:#E6E3DA}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Outfit',sans-serif;background:var(--creme);color:var(--carvao);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:560px;margin:0 auto;padding:0 18px}
+  h1,h2,.serif{font-family:'Cormorant Garamond',serif;font-weight:600}
+
+  header{background:var(--carvao);color:var(--creme);text-align:center;padding:46px 18px 40px;position:relative;overflow:hidden}
+  header::before{content:"";position:absolute;left:-60px;top:-60px;width:190px;height:190px;border-radius:50%;background:var(--salvia);opacity:.35}
+  header::after{content:"";position:absolute;right:-40px;bottom:-70px;width:170px;height:170px;border-radius:50%;border:2px solid var(--argila);opacity:.5}
+  .marca{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--salvia)}
+  header h1{font-size:clamp(38px,9vw,50px);margin:8px 0 4px;position:relative;z-index:1}
+  header h1 i{color:var(--argila);font-style:italic}
+  header p{font-size:14px;color:#D8D5CB;position:relative;z-index:1}
+
+  .passos{display:flex;justify-content:center;gap:6px;padding:18px 0 4px;font-size:12px;color:var(--cinza)}
+  .passos b{color:var(--salvia-esc)}
+
+  section{padding:26px 0 8px}
+  h2{font-size:26px;margin-bottom:4px}
+  .sub{font-size:13px;color:var(--cinza);margin-bottom:14px}
+
+  .servico{background:var(--papel);border:2px solid var(--linha);border-radius:16px;padding:16px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:border-color .15s ease}
+  .servico.sel{border-color:var(--salvia-esc);background:#F2F5F0}
+  .servico .ic{min-width:46px;height:46px;border-radius:50%;background:var(--creme);display:flex;align-items:center;justify-content:center;font-size:20px}
+  .servico h3{font-size:16px;font-weight:600}
+  .servico p{font-size:12.5px;color:var(--cinza)}
+  .servico .preco{margin-left:auto;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;color:var(--argila);white-space:nowrap}
+
+  .dias{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+  .dias::-webkit-scrollbar{display:none}
+  .dia{min-width:72px;text-align:center;background:var(--papel);border:2px solid var(--linha);border-radius:14px;padding:10px 6px;cursor:pointer}
+  .dia.sel{border-color:var(--salvia-esc);background:#F2F5F0}
+  .dia .sem{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--cinza)}
+  .dia .num{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600}
+
+  .horas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+  .hora{text-align:center;background:var(--papel);border:2px solid var(--linha);border-radius:12px;padding:11px 4px;font-weight:600;font-size:14px;cursor:pointer}
+  .hora.sel{border-color:var(--salvia-esc);background:var(--salvia-esc);color:#fff}
+  .hora.ocupado{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+
+  .resumo{background:var(--carvao);color:var(--creme);border-radius:18px;padding:22px;margin:22px 0 10px}
+  .resumo .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--salvia)}
+  .resumo .txt{font-family:'Cormorant Garamond',serif;font-size:22px;margin:6px 0 14px;min-height:30px}
+  .btn{display:block;width:100%;text-align:center;background:var(--argila);color:#fff;font-weight:700;font-size:15px;text-decoration:none;padding:15px;border-radius:99px;transition:opacity .15s ease}
+  .btn.off{opacity:.45;pointer-events:none}
+
+  footer{padding:24px 0 40px;font-size:12px;color:var(--cinza);text-align:center}
+  footer a{color:var(--salvia-esc);font-weight:700;text-decoration:none}
+  .selo-demo{position:fixed;bottom:14px;right:14px;z-index:50;background:var(--carvao);color:var(--creme);font-size:11px;font-weight:700;padding:9px 14px;border-radius:99px;box-shadow:0 8px 22px rgba(44,49,41,.35);text-decoration:none}
+  .selo-demo b{color:var(--argila)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="marca">Estética & Bem-estar</div>
+  <h1>Espaço Serena<i>.</i></h1>
+  <p>Escolha o serviço, o dia e o horário — a reserva chega no nosso WhatsApp.</p>
+</header>
+
+<div class="wrap">
+  <div class="passos"><span><b>1</b> serviço</span> · <span><b>2</b> dia</span> · <span><b>3</b> horário</span> · <span><b>4</b> confirmar</span></div>
+
+  <section>
+    <h2>1 · Escolha o serviço</h2>
+    <div id="servicos">
+      <div class="servico" data-nome="Limpeza de pele" data-preco="R$ 120"><div class="ic">🌿</div><div><h3>Limpeza de pele</h3><p>Profunda, com extração e máscara calmante · 1h15</p></div><div class="preco">R$ 120</div></div>
+      <div class="servico" data-nome="Design de sobrancelhas" data-preco="R$ 45"><div class="ic">✨</div><div><h3>Design de sobrancelhas</h3><p>Com ou sem henna · 40min</p></div><div class="preco">R$ 45</div></div>
+      <div class="servico" data-nome="Massagem relaxante" data-preco="R$ 140"><div class="ic">💆‍♀️</div><div><h3>Massagem relaxante</h3><p>Corpo inteiro, óleos essenciais · 1h</p></div><div class="preco">R$ 140</div></div>
+      <div class="servico" data-nome="Drenagem linfática" data-preco="R$ 130"><div class="ic">🤍</div><div><h3>Drenagem linfática</h3><p>Método manual · 1h</p></div><div class="preco">R$ 130</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2 · Escolha o dia</h2>
+    <p class="sub">Próximos dias com agenda aberta:</p>
+    <div class="dias" id="dias"></div>
+  </section>
+
+  <section>
+    <h2>3 · Escolha o horário</h2>
+    <div class="horas" id="horas"></div>
+  </section>
+
+  <div class="resumo">
+    <div class="lbl">Sua reserva</div>
+    <div class="txt" id="resumo">Escolha serviço, dia e horário acima ↑</div>
+    <a class="btn off" id="confirmar" href="#" target="_blank" rel="noopener">Confirmar no WhatsApp</a>
+  </div>
+
+  <footer>
+    Espaço Serena · negócio fictício para demonstração<br>
+    Agenda online criada por <a href="https://wa.me/5554999616192?text=Oi!%20Vi%20a%20agenda%20demo%20e%20quero%20uma%20para%20o%20meu%20neg%C3%B3cio">thayline.tech</a> — peça a sua
+  </footer>
+</div>
+
+<a class="selo-demo" href="https://wa.me/5554999616192?text=Oi!%20Vi%20a%20agenda%20demo%20e%20quero%20uma%20para%20o%20meu%20neg%C3%B3cio" target="_blank" rel="noopener">✦ Demo por <b>thayline.tech</b></a>
+
+<script>
+const DIAS_SEMANA=["dom","seg","ter","qua","qui","sex","sáb"];
+const MESES=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+let sel={serv:null,preco:null,dia:null,hora:null};
+
+// serviços
+document.querySelectorAll('.servico').forEach(s=>s.addEventListener('click',()=>{
+  document.querySelectorAll('.servico').forEach(x=>x.classList.remove('sel'));
+  s.classList.add('sel'); sel.serv=s.dataset.nome; sel.preco=s.dataset.preco; atualiza();
+}));
+
+// próximos 7 dias úteis (ter-sáb, como o Espaço funciona)
+const diasEl=document.getElementById('dias');
+let dt=new Date(); let adicionados=0;
+while(adicionados<7){
+  dt.setDate(dt.getDate()+1);
+  const dow=dt.getDay();
+  if(dow===0||dow===1) continue; // fecha dom/seg
+  const d=document.createElement('div');
+  d.className='dia';
+  d.dataset.label=`${DIAS_SEMANA[dow]} ${dt.getDate()}/${MESES[dt.getMonth()]}`;
+  d.innerHTML=`<div class="sem">${DIAS_SEMANA[dow]}</div><div class="num">${dt.getDate()}</div>`;
+  d.addEventListener('click',()=>{
+    document.querySelectorAll('.dia').forEach(x=>x.classList.remove('sel'));
+    d.classList.add('sel'); sel.dia=d.dataset.label; sel.hora=null; gerarHoras(); atualiza();
+  });
+  diasEl.appendChild(d); adicionados++;
+}
+
+// horários (demo: alguns marcados como ocupados para realismo)
+const HORAS=["9:00","10:30","13:00","14:30","16:00","17:30"];
+function gerarHoras(){
+  const el=document.getElementById('horas'); el.innerHTML='';
+  HORAS.forEach((h,i)=>{
+    const b=document.createElement('div');
+    const ocupado=(i+ (sel.dia?sel.dia.length:0))%4===1; // padrão pseudo-aleatório estável
+    b.className='hora'+(ocupado?' ocupado':'');
+    b.textContent=h;
+    if(!ocupado) b.addEventListener('click',()=>{
+      document.querySelectorAll('.hora').forEach(x=>x.classList.remove('sel'));
+      b.classList.add('sel'); sel.hora=h; atualiza();
+    });
+    el.appendChild(b);
+  });
+}
+gerarHoras();
+
+function atualiza(){
+  const r=document.getElementById('resumo'), btn=document.getElementById('confirmar');
+  if(sel.serv&&sel.dia&&sel.hora){
+    r.textContent=`${sel.serv} · ${sel.dia} às ${sel.hora} · ${sel.preco}`;
+    const msg=encodeURIComponent(`Oi! Quero reservar: ${sel.serv}, ${sel.dia} às ${sel.hora} 🌿`);
+    btn.href=`https://wa.me/5551999999999?text=${msg}`;
+    btn.classList.remove('off');
+  } else {
+    r.textContent=[sel.serv,sel.dia,sel.hora].filter(Boolean).join(' · ')||'Escolha serviço, dia e horário acima ↑';
+    btn.classList.add('off');
+  }
+}
+</script>
+</body>
+</html>
