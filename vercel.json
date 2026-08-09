@@ -5,6 +5,10 @@
       "dest": "/paginas/calculadora-preco-servico.html"
     },
     {
+      "src": "/agenda-demo-espaco-serena",
+      "dest": "/paginas/agenda-demo-espaco-serena.html"
+    },
+    {
       "src": "/cardapio-demo-confeitaria",
       "dest": "/paginas/cardapio-demo-confeitaria.html"
     },
