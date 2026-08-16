@@ -23,6 +23,10 @@
     {
       "src": "/pagina-venda-planilha",
       "dest": "/paginas/pagina-venda-planilha.html"
+    },
+    {
+      "src": "/sos-legenda",
+      "dest": "/paginas/sos-legenda/index.html"
     }
   ]
 }

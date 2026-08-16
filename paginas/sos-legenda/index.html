@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOS Legenda — 3 legendas prontas em 1 minuto | thayline.tech</title>
+<meta name="description" content="Ferramenta gratuita que gera 3 legendas de Instagram para pequenos negócios. Escolha o tipo de negócio, o tipo de post e pronto.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --petroleo:#123F3A;
+    --petroleo-esc:#0B2B27;
+    --menta:#2FBF8F;
+    --menta-suave:rgba(47,191,143,.18);
+    --menta-txt:#177A57;
+    --dourado:#E8B25A;
+    --dourado-suave:rgba(232,178,90,.22);
+    --coral:#E2654F;
+    --areia:#FAF7F2;
+    --grafite:#1C2321;
+    --cinza:#6B7472;
+    --linha:#E5DFD5;
+    --raio:18px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  html{scroll-behavior:smooth}
+
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--petroleo);
+    color:var(--grafite);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* Orbes de luz no fundo (depth sem mudar paleta) */
+  body::before, body::after{
+    content:"";
+    position:fixed;
+    width:520px;height:520px;
+    border-radius:50%;
+    filter:blur(110px);
+    z-index:0;
+    pointer-events:none;
+    opacity:.55;
+  }
+  body::before{
+    background:var(--menta);
+    top:-180px;right:-160px;
+  }
+  body::after{
+    background:var(--dourado);
+    bottom:-220px;left:-180px;
+    opacity:.35;
+  }
+
+  .wrap{max-width:520px;margin:0 auto;padding:0 18px;position:relative;z-index:1}
+
+  /* HEADER */
+  header{
+    color:#fff;
+    padding:44px 0 30px;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  .logo{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-.01em;
+    display:inline-flex;
+    align-items:center;
+    gap:2px;
+    padding:8px 16px;
+    border-radius:99px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+  .logo .dot{
+    color:var(--dourado);
+    text-shadow:0 0 18px rgba(232,178,90,.7), 0 0 4px rgba(232,178,90,.9);
+    animation:pulseDot 3s ease-in-out infinite;
+  }
+  .logo .tech{color:var(--menta);font-weight:600}
+
+  @keyframes pulseDot{
+    0%,100%{text-shadow:0 0 12px rgba(232,178,90,.55), 0 0 3px rgba(232,178,90,.8)}
+    50%{text-shadow:0 0 22px rgba(232,178,90,.9), 0 0 6px rgba(232,178,90,1)}
+  }
+
+  header h1{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:clamp(28px,7.4vw,38px);
+    letter-spacing:-.025em;
+    margin:18px 0 10px;
+    line-height:1.08;
+    background:linear-gradient(135deg,#fff 0%,#CFE0DB 40%,var(--menta) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+  }
+  header p{
+    color:#CFE0DB;
+    font-size:14.5px;
+    max-width:400px;
+    margin:0 auto;
+    opacity:.9;
+  }
+
+  /* CARD PRINCIPAL */
+  .card{
+    background:linear-gradient(180deg,var(--areia) 0%,#F4EFE7 100%);
+    border-radius:24px 24px 0 0;
+    padding:28px 22px 56px;
+    margin-top:28px;
+    position:relative;
+    box-shadow:
+      0 -1px 0 rgba(255,255,255,.6) inset,
+      0 -20px 60px -10px rgba(11,43,39,.25),
+      0 30px 60px -20px rgba(11,43,39,.35);
+    z-index:1;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:24px 24px 0 0;
+    padding:1px;
+    background:linear-gradient(180deg,rgba(47,191,143,.5),rgba(232,178,90,.15) 40%,transparent);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+            mask-composite:exclude;
+    pointer-events:none;
+  }
+
+  .bloco{margin-bottom:20px}
+
+  label{
+    display:block;
+    font-weight:600;
+    font-size:14px;
+    margin-bottom:10px;
+    color:var(--grafite);
+    letter-spacing:.005em;
+  }
+  label small{
+    display:block;
+    font-weight:400;
+    color:var(--cinza);
+    font-size:12px;
+    margin-top:4px;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  label small em{
+    font-style:normal;
+    opacity:.7;
+  }
+  .tag{
+    background:var(--menta-suave);
+    color:var(--menta-txt);
+    font:600 11px 'Inter',sans-serif;
+    padding:2px 8px;
+    border-radius:6px;
+    border:1px dashed rgba(47,191,143,.5);
+    letter-spacing:.01em;
+  }
+
+  input[type="text"]::placeholder{
+    color:#9CA8A2;
+    font-weight:500;
+    opacity:1;
+  }
+
+  input[type="text"]{
+    width:100%;
+    padding:15px 16px;
+    border:1.5px solid var(--linha);
+    border-radius:14px;
+    font:600 16px 'Inter',sans-serif;
+    background:#fff;
+    color:var(--grafite);
+    transition:all .2s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 1px 2px rgba(11,43,39,.04);
+  }
+  input[type="text"]:hover{border-color:#C8C0B0}
+  input[type="text"]:focus{
+    outline:none;
+    border-color:var(--menta);
+    box-shadow:0 0 0 4px var(--menta-suave), 0 4px 12px rgba(47,191,143,.15);
+    transform:translateY(-1px);
+  }
+
+  /* OPÇÕES */
+  .opcoes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .opcoes.col3{grid-template-columns:1fr 1fr 1fr}
+  .opcoes button{
+    background:#fff;
+    border:1.5px solid var(--linha);
+    border-radius:14px;
+    padding:14px 10px;
+    font:600 13px 'Inter',sans-serif;
+    color:var(--grafite);
+    cursor:pointer;
+    transition:all .22s cubic-bezier(.2,.8,.2,1);
+    text-align:center;
+    position:relative;
+    box-shadow:0 1px 2px rgba(11,43,39,.04);
+    overflow:hidden;
+  }
+  .opcoes button:hover{
+    border-color:var(--menta);
+    transform:translateY(-2px);
+    box-shadow:0 6px 14px -4px rgba(47,191,143,.25), 0 2px 4px rgba(11,43,39,.06);
+  }
+  .opcoes button:active{transform:translateY(0) scale(.98)}
+  .opcoes button.ativo{
+    background:var(--petroleo);
+    border-color:var(--petroleo);
+    color:#fff;
+    box-shadow:
+      0 0 0 3px rgba(47,191,143,.18),
+      0 8px 20px -6px rgba(11,43,39,.55),
+      inset 0 1px 0 rgba(255,255,255,.12);
+    transform:translateY(-1px);
+  }
+  .opcoes button.ativo::after{
+    content:"";
+    position:absolute;
+    top:8px;right:8px;
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--menta);
+    box-shadow:0 0 8px var(--menta);
+    animation:pop .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+
+  /* BOTÕES PRINCIPAIS */
+  .botao{
+    width:100%;
+    border:none;
+    border-radius:14px;
+    padding:17px;
+    font:700 16px 'Inter',sans-serif;
+    cursor:pointer;
+    margin-top:8px;
+    transition:all .2s cubic-bezier(.2,.8,.2,1);
+    position:relative;
+    letter-spacing:.01em;
+  }
+  .botao:active{transform:scale(.985)}
+
+  .botao.primario{
+    background:linear-gradient(135deg,var(--petroleo) 0%,#1A524A 100%);
+    color:#fff;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.15) inset,
+      0 10px 30px -10px rgba(11,43,39,.6),
+      0 4px 12px -4px rgba(47,191,143,.35);
+  }
+  .botao.primario:hover{
+    transform:translateY(-2px);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.18) inset,
+      0 16px 40px -12px rgba(11,43,39,.7),
+      0 6px 18px -4px rgba(47,191,143,.5);
+  }
+  .botao.primario::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:14px;
+    background:linear-gradient(135deg,transparent 0%,rgba(47,191,143,.25) 100%);
+    opacity:0;
+    transition:opacity .25s;
+  }
+  .botao.primario:hover::before{opacity:1}
+
+  .botao.secundario{
+    background:transparent;
+    color:var(--petroleo);
+    border:1.5px solid var(--petroleo);
+    margin-top:20px;
+    font-weight:600;
+  }
+  .botao.secundario:hover{
+    background:var(--petroleo);
+    color:#fff;
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px -6px rgba(11,43,39,.4);
+  }
+
+  /* ALERTA */
+  .alerta{
+    display:none;
+    font-size:13px;
+    background:linear-gradient(135deg,#FBE9E5 0%,#FCDDD6 100%);
+    color:#B23F2C;
+    border-radius:12px;
+    padding:11px 14px;
+    margin-top:14px;
+    border:1px solid rgba(226,101,79,.25);
+    animation:shake .35s cubic-bezier(.36,.07,.19,.97) both;
+  }
+  @keyframes shake{
+    10%,90%{transform:translateX(-1px)}
+    20%,80%{transform:translateX(2px)}
+    30%,50%,70%{transform:translateX(-3px)}
+    40%,60%{transform:translateX(3px)}
+  }
+
+  /* RESULTADOS */
+  #resultados{
+    display:none;
+    margin-top:26px;
+  }
+  #resultados.on{
+    display:block;
+    animation:sobe .5s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes sobe{
+    from{opacity:0;transform:translateY(16px)}
+    to{opacity:1;transform:none}
+  }
+
+  #resultados h2{
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:22px;
+    color:var(--grafite);
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  #resultados h2::before{
+    content:"✨";
+    display:inline-block;
+    animation:twinkle 2.4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{transform:rotate(0) scale(1)}
+    50%{transform:rotate(15deg) scale(1.15)}
+  }
+
+  .legenda-card{
+    background:#fff;
+    border:1px solid var(--linha);
+    border-radius:16px;
+    padding:17px 18px;
+    margin-bottom:12px;
+    position:relative;
+    transition:all .25s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 2px 6px rgba(11,43,39,.04);
+    opacity:0;
+    transform:translateY(14px);
+    animation:cardIn .5s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  .legenda-card:nth-child(2){animation-delay:.08s}
+  .legenda-card:nth-child(3){animation-delay:.16s}
+  .legenda-card:hover{
+    transform:translateY(-3px);
+    box-shadow:
+      0 0 0 1px var(--menta-suave),
+      0 12px 28px -8px rgba(47,191,143,.25),
+      0 4px 8px rgba(11,43,39,.05);
+    border-color:var(--menta);
+  }
+  @keyframes cardIn{to{opacity:1;transform:none}}
+
+  .legenda-card .num{
+    position:absolute;
+    top:-10px;left:16px;
+    background:var(--petroleo);
+    color:var(--dourado);
+    font:700 11px 'Inter',sans-serif;
+    padding:4px 10px;
+    border-radius:99px;
+    letter-spacing:.08em;
+    box-shadow:0 4px 10px -2px rgba(11,43,39,.4);
+  }
+  .legenda-card .texto{
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--grafite);
+    margin-bottom:14px;
+    white-space:pre-wrap;
+  }
+
+  /* INPUT INLINE — onde o cliente digita sua parte */
+  .legenda-card .texto .editavel{
+    display:inline-block;
+    min-width:120px;
+    max-width:100%;
+    padding:3px 10px;
+    margin:0 2px;
+    border:none;
+    border-bottom:2px dashed var(--menta);
+    background:var(--menta-suave);
+    color:var(--grafite);
+    font:600 14.5px 'Inter',sans-serif;
+    border-radius:6px 6px 0 0;
+    vertical-align:baseline;
+    transition:all .2s cubic-bezier(.2,.8,.2,1);
+    outline:none;
+    -webkit-appearance:none;
+    appearance:none;
+  }
+  .legenda-card .texto .editavel::placeholder{
+    color:var(--menta-txt);
+    font-weight:600;
+    opacity:.85;
+    font-style:italic;
+  }
+  .legenda-card .texto .editavel:hover{
+    background:rgba(47,191,143,.28);
+    border-bottom-color:var(--menta);
+  }
+  .legenda-card .texto .editavel:focus{
+    background:rgba(47,191,143,.18);
+    border-bottom:2px solid var(--menta);
+    box-shadow:0 0 0 3px rgba(47,191,143,.15);
+    min-width:160px;
+  }
+
+  .btn-copiar{
+    background:var(--menta);
+    color:var(--petroleo-esc);
+    font:700 13px 'Inter',sans-serif;
+    border:none;
+    border-radius:99px;
+    padding:9px 18px;
+    cursor:pointer;
+    transition:all .2s cubic-bezier(.2,.8,.2,1);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    box-shadow:0 4px 12px -3px rgba(47,191,143,.5);
+  }
+  .btn-copiar:hover{
+    transform:translateY(-1px);
+    box-shadow:0 8px 18px -4px rgba(47,191,143,.6);
+  }
+  .btn-copiar.copiado{
+    background:var(--petroleo);
+    color:var(--dourado);
+    animation:pulse .4s cubic-bezier(.34,1.56,.64,1);
+    box-shadow:0 0 0 4px rgba(232,178,90,.2), 0 8px 18px -4px rgba(11,43,39,.5);
+  }
+  @keyframes pulse{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.08)}
+    100%{transform:scale(1)}
+  }
+
+  /* CTA FINAL */
+  .cta-final{
+    margin-top:28px;
+    background:linear-gradient(135deg,var(--petroleo) 0%,var(--petroleo-esc) 100%);
+    color:#fff;
+    border-radius:20px;
+    padding:26px 22px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.1) inset,
+      0 20px 50px -10px rgba(11,43,39,.5);
+  }
+  .cta-final::before{
+    content:"";
+    position:absolute;
+    width:300px;height:300px;
+    border-radius:50%;
+    background:var(--menta);
+    filter:blur(80px);
+    top:-100px;right:-100px;
+    opacity:.25;
+    pointer-events:none;
+  }
+  .cta-final::after{
+    content:"";
+    position:absolute;
+    width:220px;height:220px;
+    border-radius:50%;
+    background:var(--dourado);
+    filter:blur(70px);
+    bottom:-80px;left:-80px;
+    opacity:.2;
+    pointer-events:none;
+  }
+  .cta-final p{
+    font-size:14.5px;
+    line-height:1.6;
+    margin-bottom:18px;
+    position:relative;
+    z-index:1;
+    color:#E6EFEC;
+  }
+  .cta-final p strong{color:var(--dourado);font-weight:700}
+  .btn-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--menta);
+    color:var(--petroleo-esc);
+    font:700 15px 'Inter',sans-serif;
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:99px;
+    position:relative;
+    z-index:1;
+    transition:all .2s cubic-bezier(.2,.8,.2,1);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.4) inset,
+      0 10px 24px -6px rgba(47,191,143,.6),
+      0 0 0 4px rgba(47,191,143,.12);
+  }
+  .btn-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.4) inset,
+      0 16px 30px -8px rgba(47,191,143,.75),
+      0 0 0 6px rgba(47,191,143,.18);
+  }
+  .btn-cta svg{transition:transform .2s}
+  .btn-cta:hover svg{transform:translateX(3px)}
+
+  .rodape{
+    font-size:11px;
+    color:var(--cinza);
+    text-align:center;
+    margin-top:24px;
+    opacity:.7;
+  }
+
+  @media (max-width:380px){
+    .opcoes.col3{grid-template-columns:1fr 1fr}
+    .opcoes button{font-size:12px;padding:12px 8px}
+    header{padding:36px 0 24px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:.01ms!important;
+      animation-iteration-count:1!important;
+      transition-duration:.01ms!important;
+    }
+    body::before, body::after{display:none}
+  }
+
+  button:focus-visible,input:focus-visible,a:focus-visible{
+    outline:3px solid var(--menta);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">thayline<span class="dot">.</span><span class="tech">tech</span></div>
+  <h1>3 legendas prontas em 1 minuto</h1>
+  <p>Escolha o tipo de negócio e o tipo de post. A gente monta pra você.</p>
+</header>
+
+<div class="card">
+  <div class="wrap" style="padding:0">
+
+    <div class="bloco">
+      <label>1. Tipo de negócio</label>
+      <div class="opcoes" id="grupoNegocio">
+        <button type="button" data-valor="salao">Salão / Estética</button>
+        <button type="button" data-valor="confeitaria">Confeitaria</button>
+        <button type="button" data-valor="moda">Moda</button>
+        <button type="button" data-valor="servicos">Serviços gerais</button>
+      </div>
+    </div>
+
+    <div class="bloco">
+      <label>2. Tipo de post</label>
+      <div class="opcoes col3" id="grupoPost">
+        <button type="button" data-valor="promocao">Promoção</button>
+        <button type="button" data-valor="novidade">Novidade</button>
+        <button type="button" data-valor="bastidor">Bastidor</button>
+        <button type="button" data-valor="depoimento">Depoimento</button>
+        <button type="button" data-valor="dica">Dica</button>
+        <button type="button" data-valor="data">Data especial</button>
+      </div>
+    </div>
+
+    <div class="bloco">
+      <label for="nome">3. Nome do seu negócio <small>vai aparecer onde está <mark class="tag">seu negócio</mark></small></label>
+      <input type="text" id="nome" placeholder="✎ Digite aqui — Ex: Studio Luma" autocomplete="off">
+    </div>
+
+    <div class="bloco">
+      <label for="detalhe">4. O que está rolando? <small>vai aparecer onde está <mark class="tag">algo especial</mark> <em>(opcional)</em></small></label>
+      <input type="text" id="detalhe" placeholder="✎ Digite aqui — Ex: 20% off até sexta" autocomplete="off">
+    </div>
+
+    <button class="botao primario" id="btnGerar" type="button">Gerar legendas</button>
+    <div class="alerta" id="alerta" role="alert"></div>
+
+    <section id="resultados" aria-live="polite">
+      <h2>Suas 3 legendas</h2>
+      <p style="font-size:13px;color:var(--cinza);margin:-6px 0 14px">Toque nos trechos em <span style="background:var(--menta-suave);color:var(--menta-txt);font-weight:600;padding:2px 6px;border-radius:4px;border-bottom:1.5px dashed var(--menta)">verde</span> e digite sua parte.</p>
+      <article class="legenda-card">
+        <span class="num">01</span>
+        <p class="texto" id="txt1"></p>
+        <button class="btn-copiar" type="button" data-txt="txt1">Copiar</button>
+      </article>
+      <article class="legenda-card">
+        <span class="num">02</span>
+        <p class="texto" id="txt2"></p>
+        <button class="btn-copiar" type="button" data-txt="txt2">Copiar</button>
+      </article>
+      <article class="legenda-card">
+        <span class="num">03</span>
+        <p class="texto" id="txt3"></p>
+        <button class="btn-copiar" type="button" data-txt="txt3">Copiar</button>
+      </article>
+      <button class="botao secundario" id="btnReembaralhar" type="button">Gerar outras 3</button>
+    </section>
+
+    <section class="cta-final">
+      <p>Curtiu ter a legenda pronta na hora? Imagina ter também um <strong>site que trabalha por você 24h</strong>, sem precisar postar nada.</p>
+      <a class="btn-cta" href="https://wa.me/5554999616192?text=Oi!%20Usei%20a%20SOS%20Legenda%20e%20quero%20saber%20mais%20sobre%20ter%20um%20site" target="_blank" rel="noopener">Me chama no direct
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </section>
+
+    <p class="rodape">Feita com código e carinho por Thayline Simioni · @thayline.tech</p>
+  </div>
+</div>
+
+<script>
+const GANCHOS = {
+  promocao: [
+    "🔥 {DETALHE} na {NOME}! Corre que é por tempo limitado.",
+    "Psiu... isso aqui é só pra quem tá vendo agora: {DETALHE} 💛",
+    "Sextou com desconto? Aqui na {NOME}, sim! {DETALHE}"
+  ],
+  novidade: [
+    "Novidade chegando na {NOME}! 🎉 {DETALHE}",
+    "Adivinha o que tem de novo por aqui? {DETALHE} ✨",
+    "{NOME} tem novidade fresquinha: {DETALHE}"
+  ],
+  bastidor: [
+    "Deixa eu te mostrar um pouquinho do que rola por trás da {NOME} 👀",
+    "Bastidor de hoje na {NOME}: {DETALHE}",
+    "Poucas pessoas veem esse lado da {NOME}... {DETALHE}"
+  ],
+  depoimento: [
+    "Isso aqui é o motivo de eu amar o que faço 🥹 Olha o que uma cliente da {NOME} disse:",
+    "Recebi essa mensagem hoje e precisava compartilhar 💛 {DETALHE}",
+    "A {NOME} existe por causa de momentos assim:"
+  ],
+  dica: [
+    "Uma dica rapidinha de quem entende do assunto na {NOME}: {DETALHE}",
+    "Psiu, vem cá que eu te conto um segredinho: {DETALHE}",
+    "{NOME} ensina: {DETALHE}"
+  ],
+  data: [
+    "É hoje! 🎉 {DETALHE} — e a {NOME} quer comemorar com você.",
+    "Data especial pede comemoração especial: {DETALHE} na {NOME}!",
+    "{NOME} preparou algo pra essa data: {DETALHE}"
+  ]
+};
+
+const CORPOS = {
+  promocao: [
+    "Válido só até acabar o estoque — não deixa pra depois!",
+    "Vem aproveitar antes que a promoção termine 💛",
+    "É por tempo limitado mesmo — não custa nada dar uma olhada."
+  ],
+  novidade: [
+    "Ainda tá fresquinho, então corre pra ser dos primeiros a experimentar.",
+    "Já pode vir conferir de perto — vai adorar.",
+    "Fizemos com muito carinho pensando em você."
+  ],
+  bastidor: [
+    "Cada detalhe é pensado com carinho antes de chegar até você.",
+    "É trabalho, mas é trabalho que a gente ama fazer.",
+    "Por trás do resultado final tem muita dedicação."
+  ],
+  depoimento: [
+    "Ver esse tipo de retorno é o faz valer a pena todo o esforço.",
+    "Mensagens assim renovam a energia pra continuar fazendo o melhor.",
+    "Cada cliente satisfeita é uma vitória pra gente."
+  ],
+  dica: [
+    "Anota aí que vale a pena guardar essa dica 📌",
+    "Simples, mas faz toda a diferença no resultado.",
+    "Poucas pessoas sabem disso — agora você sabe também."
+  ],
+  data: [
+    "Nada melhor que celebrar as coisas boas da vida.",
+    "Separamos algo especial pra fazer parte da sua comemoração.",
+    "Datas assim merecem ser lembradas com carinho."
+  ]
+};
+
+const CTAS = {
+  salao: [
+    'Comenta "QUERO" e garante seu horário 💇‍♀️',
+    "Chama no direct pra agendar o seu!",
+    "Manda mensagem e já separamos um horário pra você."
+  ],
+  confeitaria: [
+    'Comenta "QUERO" e já separo o seu 🧁',
+    "Manda mensagem e encomenda o seu!",
+    "Chama no direct pra garantir antes que acabe."
+  ],
+  moda: [
+    'Comenta "QUERO" e te mando mais detalhes 👗',
+    "Chama no direct pra garantir o seu tamanho!",
+    "Manda mensagem antes que a peça acabe."
+  ],
+  servicos: [
+    "Chama no direct pra saber mais �️",
+    "Manda mensagem e a gente conversa sobre o seu caso.",
+    'Comenta "QUERO" e te explico como funciona.'
+  ]
+};
+
+// Placeholders contextuais por tipo de post — orientam o cliente sobre o que digitar
+const PLACEHOLDERS = {
+  promocao:   { nome: "digite o nome do seu negócio",        detalhe: "descreva a promoção aqui" },
+  novidade:   { nome: "digite o nome do seu negócio",        detalhe: "conte qual é a novidade" },
+  bastidor:   { nome: "digite o nome do seu negócio",        detalhe: "conte o que está rolando nos bastidores" },
+  depoimento: { nome: "digite o nome do seu negócio",        detalhe: "digite aqui o que a cliente disse" },
+  dica:       { nome: "digite o nome do seu negócio",        detalhe: "escreva a dica que você quer dar" },
+  data:       { nome: "digite o nome do seu negócio",        detalhe: "conte como você vai comemorar a data" }
+};
+
+let tipoNegocio = null;
+let tipoPost = null;
+
+function embaralhar(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Escapa HTML para evitar injeção
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+
+// Retorna HTML com inputs inline no lugar dos placeholders
+function montarHTML(template, idx, nomeVal, detalheVal) {
+  const ph = PLACEHOLDERS[tipoPost];
+  const safe = esc(template);
+
+  const inputNome = `<input type="text" class="editavel" data-edit="nome" data-card="${idx}" placeholder="${esc(ph.nome)}" value="${esc(nomeVal)}" autocomplete="off">`;
+  const inputDet  = `<input type="text" class="editavel" data-edit="detalhe" data-card="${idx}" placeholder="${esc(ph.detalhe)}" value="${esc(detalheVal)}" autocomplete="off">`;
+
+  return safe
+    .replace(/\{NOME\}/g, inputNome)
+    .replace(/\{DETALHE\}/g, inputDet);
+}
+
+// Extrai o texto final de um card (com o que o cliente digitou nos inputs)
+function extrairTexto(cardEl) {
+  // Substitui inputs pelo seu value (ou placeholder) dentro do card
+  const clone = cardEl.cloneNode(true);
+  clone.querySelectorAll("input.editavel").forEach(inp => {
+    const val = inp.value.trim() || inp.placeholder;
+    const txt = document.createTextNode(val);
+    inp.parentNode.replaceChild(txt, inp);
+  });
+  // Normaliza quebras — cada bloco (gancho / corpo / cta) tem \n\n entre eles no template final
+  return clone.textContent;
+}
+
+function selecionar(grupo, valor) {
+  grupo.querySelectorAll("button").forEach(b => b.classList.remove("ativo"));
+  const btn = grupo.querySelector(`button[data-valor="${valor}"]`);
+  if (btn) btn.classList.add("ativo");
+}
+
+document.getElementById("grupoNegocio").addEventListener("click", e => {
+  const b = e.target.closest("button[data-valor]");
+  if (!b) return;
+  tipoNegocio = b.dataset.valor;
+  selecionar(e.currentTarget, tipoNegocio);
+});
+
+document.getElementById("grupoPost").addEventListener("click", e => {
+  const b = e.target.closest("button[data-valor]");
+  if (!b) return;
+  tipoPost = b.dataset.valor;
+  selecionar(e.currentTarget, tipoPost);
+});
+
+function gerar() {
+  const alerta = document.getElementById("alerta");
+  alerta.style.display = "none";
+  if (!tipoNegocio || !tipoPost) {
+    const falta = [];
+    if (!tipoNegocio) falta.push("tipo de negócio");
+    if (!tipoPost) falta.push("tipo de post");
+    alerta.textContent = "Escolha " + (falta.length === 1 ? "o" : "os") + " " + falta.join(" e ") + " antes de gerar 🙂";
+    alerta.style.display = "block";
+    return;
+  }
+
+  const nome = document.getElementById("nome").value.trim();
+  const detalhe = document.getElementById("detalhe").value.trim();
+
+  const g = embaralhar(GANCHOS[tipoPost]);
+  const c = embaralhar(CORPOS[tipoPost]);
+  const t = embaralhar(CTAS[tipoNegocio]);
+
+  const blocos = [0, 1, 2].map(i =>
+    `${montarHTML(g[i], i, nome, "")}\n\n${montarHTML(c[i], i, "", "")}\n\n${montarHTML(t[i], i, "", "")}`
+  );
+
+  // Re-trigger animação de entrada dos cards
+  document.querySelectorAll(".legenda-card").forEach(card => {
+    card.style.animation = "none";
+    void card.offsetWidth;
+    card.style.animation = "";
+  });
+
+  // Insere via innerHTML para preservar os inputs inline
+  document.getElementById("txt1").innerHTML = blocos[0];
+  document.getElementById("txt2").innerHTML = blocos[1];
+  document.getElementById("txt3").innerHTML = blocos[2];
+
+  // Pré-popula o campo NOME em todos os cards (já que é o mesmo pra todos)
+  if (nome) {
+    document.querySelectorAll('input.editavel[data-edit="nome"]').forEach(inp => { inp.value = nome; });
+  }
+
+  document.querySelectorAll(".btn-copiar").forEach(b => {
+    b.textContent = "Copiar";
+    b.classList.remove("copiado");
+  });
+
+  const res = document.getElementById("resultados");
+  res.classList.add("on");
+  res.style.display = "block";
+  res.scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+async function copiar(btn) {
+  const id = btn.dataset.txt;
+  const cardEl = document.getElementById(id);
+  const texto = extrairTexto(cardEl);
+  try {
+    await navigator.clipboard.writeText(texto);
+    btn.textContent = "✓ Copiado!";
+    btn.classList.add("copiado");
+    setTimeout(() => {
+      btn.textContent = "Copiar";
+      btn.classList.remove("copiado");
+    }, 2000);
+  } catch (err) {
+    // fallback: seleciona o conteúdo do card
+    const range = document.createRange();
+    range.selectNodeContents(cardEl);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    btn.textContent = "Selecionado ✓";
+    btn.classList.add("copiado");
+    setTimeout(() => {
+      btn.textContent = "Copiar";
+      btn.classList.remove("copiado");
+      sel.removeAllRanges();
+    }, 2000);
+  }
+}
+
+document.getElementById("btnGerar").addEventListener("click", gerar);
+document.getElementById("btnReembaralhar").addEventListener("click", gerar);
+document.querySelectorAll(".btn-copiar").forEach(b => b.addEventListener("click", () => copiar(b)));
+</script>
+</body>
+</html>
